@@ -53,7 +53,7 @@ inline void checkDependencyLoop(){
         std::string currentHash = getHash();
 
         if(lastHash != currentHash){
-            LOG("Dependencys got Updated");
+            //LOG("Dependencys got Updated");
             updateRequirements();
         }
 
