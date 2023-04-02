@@ -48,9 +48,7 @@ function initSnake(canvas) {
 
 function afterChecks(canvas) {
     if (snakeHeader[0] === apple[0] && snakeHeader[1] == apple[1]) {
-        console.log("Ate apple");
         snake.unshift([-300,-300]);
-        console.log(snake);
         apple = renderRandomApple(canvas);
     }
     else if (snakeHeader[0] * correctur_x >= 5000 || snakeHeader[0] < 0 || snakeHeader[1] * correctur_y >= 5000 || snakeHeader[1] < 0) {
@@ -59,14 +57,11 @@ function afterChecks(canvas) {
 }
 
 function run() {
-    console.log("Starting now Game");
     var canvas = null;
     while (canvas == null) {
         canvas = document.getElementById("game");
-        console.log("Wating until canvas is loadet")
     }
     resize();
-    console.log(correctur_x, correctur_y);
     initSnake(canvas);
     //renderRandomApple(canvas);
     intervalId = window.setInterval(function () {
