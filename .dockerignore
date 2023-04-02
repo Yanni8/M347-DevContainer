@@ -1,0 +1,11 @@
+**/__pycache__/**
+/lib/**
+/include/**
+/bin/**
+/.idea/**
+/test_main.http
+/pyvenv.cfg
+/.gitignore
+/.git/
+/Dockerfile
+**/*.pyc
