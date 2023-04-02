@@ -9,6 +9,8 @@ from app.service import score_service
 
 Base.metadata.create_all(bind=engine)
 
+BASE_URL = "/api/v1"
+
 app = FastAPI()
 
 
@@ -20,7 +22,7 @@ def get_db():
         db.close()
 
 
-@app.get("/highscore", )
+@app.get(f"{BASE_URL}/highscore", )
 async def get_highscore(db: Session = Depends(get_db)) -> int:
     """
     Http Endpoint to get the highscore over all played games
@@ -28,7 +30,7 @@ async def get_highscore(db: Session = Depends(get_db)) -> int:
     return score_service.get_highscore(db)
 
 
-@app.post("/")
+@app.post(f"{BASE_URL}/score/")
 async def add_new_score(score: Score, db: Session = Depends(get_db)) -> str:
     """
     Http Endpoint to add a new Score to the collection. If no user_id is provied,
@@ -40,7 +42,7 @@ async def add_new_score(score: Score, db: Session = Depends(get_db)) -> str:
     return score_service.insert_new_score(score, db)
 
 
-@app.get("/")
+@app.get(f"{BASE_URL}/score/")
 async def get_all_scores(user_id: str = "", db: Session = Depends(get_db)) -> list[Score]:
     """
     Http Endpoint to get all played games of a sigel User
