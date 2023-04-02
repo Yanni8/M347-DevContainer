@@ -1,0 +1,10 @@
+{
+	"name": "Existing Dockerfile",
+	"build": {
+
+		"context": "..",
+
+		"dockerfile": "../DevEnvironnement/Dockerfile"
+	}
+
+}
