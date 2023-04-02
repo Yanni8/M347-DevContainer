@@ -1,5 +1,9 @@
 FROM python:3.9.2
 
+LABEL VERSION=0.0.1
+LABEL AUTHOR="Yannick Müller"
+LABEL CONTACT="contact@ynnk.dev"
+
 COPY . /app
 
 RUN useradd -d /app -s /bin/bash application \
