@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
+from fastapi.staticfiles import StaticFiles
 
-from app.db import model
 from app.db.model import Base
 from app.schemas import Score
 from app.db.database import SessionLocal, engine
@@ -13,6 +13,7 @@ BASE_URL = "/api/v1"
 
 app = FastAPI()
 
+app.mount("/", StaticFiles(directory="web", html = True), name="web")
 
 def get_db():
     db = SessionLocal()

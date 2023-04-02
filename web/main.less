@@ -1,0 +1,57 @@
+html, body { height: 100%;  min-height: 100%;width: 100%;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@primary: #00838F;
+
+
+
+header{
+    background-color: @primary;
+    height: 4rem;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#main-content{
+    height: calc(100% - 10rem);
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+footer{
+    height: 6rem;
+    position: relative;
+    right: 0;
+    width: 100%;
+    background-color: @primary;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .important-text{
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}
+
+
+
+#warranty-message{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    >span{
+        color: #fff;
+        text-align: center;
+    }
+}
+
+#title{
+    color: #fff;
+    margin-left: 1.5rem;
+    margin-bottom: 0;
+    margin-top: 0;
+}
