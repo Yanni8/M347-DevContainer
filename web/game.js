@@ -1,4 +1,6 @@
 var correctur_x = 1, correctur_y = 1;
+var snake = [];
+var snakeHeader;
 
 function renderRandomApple(canvas){
     let x = Math.random() * 4800;
@@ -8,7 +10,7 @@ function renderRandomApple(canvas){
 
     const ctx = canvas.getContext("2d");
     ctx.fillStyle = "#800303";
-    ctx.fillRect(x,y,200 * correctur_x,200 * correctur_y);
+    ctx.fillRect(x*correctur_x,y*correctur_y,200 * correctur_x,200 * correctur_y);
 
     return ctx;
 }
@@ -25,6 +27,30 @@ function resize(){
     }
 }
 
+function drawShape(x,y, canvas, color){
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = color;
+    ctx.fillRect(x*correctur_x,y*correctur_y,200 * correctur_x,200 * correctur_y);
+    return [x,y];
+}
+
+function moveSnake(newX, newY, canvas){
+    
+    let elementToRemove = snake.at(0);
+    snake.shift(); 
+    drawShape(elementToRemove[0], elementToRemove[1], canvas, "#636363");
+    snake.push(drawShape(snakeHeader[0], snakeHeader[1], canvas, "#00a329"))
+    snakeHeader = drawShape(newX, newY, canvas, "#ffffff");
+}
+
+function initSnake(canvas){
+    snake.push(drawShape(0,0,canvas, "#00a329"))
+
+    snake.push(drawShape(200,0,canvas, "#00a329"))
+
+    snakeHeader = drawShape(400,0,canvas, "#ffffff")
+}
+
 function run() {
     console.log("Starting now Game");
     var canvas = null;
@@ -34,7 +60,11 @@ function run() {
     }
     resize();
     console.log(correctur_x,correctur_y);
-    renderRandomApple(canvas);
+    initSnake(canvas);
+    moveSnake(600,0,canvas);
+    moveSnake(800,0,canvas);
+
+    //renderRandomApple(canvas);
 }
 
 run();
