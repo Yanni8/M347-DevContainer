@@ -1,6 +1,8 @@
 var correctur_x = 1, correctur_y = 1;
 var snake = [];
 var snakeHeader;
+var lastKey;
+var snakeMove = [0,0];
 
 function renderRandomApple(canvas){
     let x = Math.random() * 4800;
@@ -49,6 +51,13 @@ function initSnake(canvas){
     snake.push(drawShape(200,0,canvas, "#00a329"))
 
     snakeHeader = drawShape(400,0,canvas, "#ffffff")
+
+    snakeMove = [200,0];
+}
+
+function gameLoop(canvas){
+    let currentX = 400, currentY = 0;
+
 }
 
 function run() {
@@ -61,11 +70,33 @@ function run() {
     resize();
     console.log(correctur_x,correctur_y);
     initSnake(canvas);
-    moveSnake(600,0,canvas);
-    moveSnake(800,0,canvas);
-
+    gameLoop(canvas);
     //renderRandomApple(canvas);
+    window.setInterval(function(){
+        if(lastKey === "ArrowRight" && snakeMove[0] !== -200){
+            snakeMove = [200,0];
+        }
+
+        if(lastKey === "ArrowLeft" && snakeMove[0] !== 200){
+            snakeMove = [-200,0];
+        }
+
+        if(lastKey === "ArrowUp" && snakeMove[1] !== 200){
+            snakeMove = [0,-200];
+        }
+
+        if(lastKey === "ArrowDown" && snakeMove[1] !== -200){
+            snakeMove = [0,200];
+        }
+        moveSnake(snakeHeader[0] + snakeMove[0], snakeHeader[1] + snakeMove[1], canvas);
+        lastKey = undefined;
+    }, 100)
 }
 
 run();
 
+window.addEventListener('keydown', function(event) {
+    if(event.key.startsWith("Arrow")){
+        lastKey = event.key;
+    }
+});
