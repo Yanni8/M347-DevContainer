@@ -40,7 +40,7 @@ std::string getHash(){
 
 
 void updateRequirements(){
-    system("python3 -m pip freeze > requiremenets.txt");
+    system("python3 -m pip freeze > requirements.txt");
 }
 /**
  * Method to constantly check if a new library got added
