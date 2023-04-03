@@ -1,0 +1,36 @@
+version: '3.7'
+services:
+  app:
+    image: ghcr.io/yanni8/m347-devcontainer/devcontainer:latest
+
+    container_name: devcontainerApp
+    ports:
+      - "8080:8000"
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    networks:
+      - dev-network
+    depends_on:
+      - database
+    hostname: app
+    environment:
+      - "SQL_CONNECTION=mysql:${MYSQL_PASSWORD}//root:${MYSQL_PASSWORD}@db/snake"
+
+  database:
+    image: mysql:5.7
+    ports:
+      - "${SQL_PORT}:3306"
+    expose:
+      - "3306"
+    container_name: devcontainerDb
+    networks:
+      - dev-network
+    hostname: db
+
+    environment:
+      - "MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}"
+
+networks:
+  dev-network:
+    driver: bridge

@@ -4,6 +4,7 @@ COPY ./DevEnvironnement/dependencyWatcher.cpp .
 
 RUN c++ dependencyWatcher.cpp -o watcher -lcrypto
 
+RUN strip -s watcher
 
 FROM python:3.9.2
 
