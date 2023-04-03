@@ -1,12 +1,13 @@
 {
 	"name": "Existing Dockerfile",
-	"build": {
-
-		"context": "..",
-
-		"dockerfile": "../DevEnvironnement/Dockerfile"
-	},
+	"dockerComposeFile": [
+		"../DevEnvironnement/docker-compose.yml"
+	],
 	
+	"service": "app",
+
+	"remoteUser": "application",
+
 	//Because the Devcontainer environnement overrides the default Entrypoint...
 	"onCreateCommand": "echo 'watcher &' >> ~/.bashrc"
 }

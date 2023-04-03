@@ -16,6 +16,8 @@ services:
     hostname: app
     environment:
       - "SQL_CONNECTION=mysql:${MYSQL_PASSWORD}//root:${MYSQL_PASSWORD}@db/snake"
+    volumes:
+      - ..:~:cached
 
   database:
     image: mysql:5.7
