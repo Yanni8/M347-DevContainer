@@ -9,10 +9,10 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build Docker Image
       run: |
-        docker build -t docker.pkg.github.com/Yanni8/m347-devcontainer/devcontainer:latest . -f ./DevEnvironnement/Dockerfile
+        docker build -t docker.pkg.github.com/yanni8/m347-devcontainer/devcontainer:latest . -f ./DevEnvironnement/Dockerfile
     - name: Login to GitHub Packages
       run: |
         echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u "${{ github.actor }}" --password-stdin
     - name: Push Docker Image
       run: |
-        docker push docker.pkg.github.com/Yanni8/m347-devcontainer/devcontainer:latest
+        docker push docker.pkg.github.com/yanni8/m347-devcontainer/devcontainer:latest
