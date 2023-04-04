@@ -16,12 +16,12 @@ services:
     hostname: app
     env_file: "../.env"
     volumes:
-      - ..:~:cached
+      - ..:/app:cached
 
   database:
     image: mysql:5.7
     ports:
-      - "${SQL_PORT}:3306"
+      - "3306:3306"
     expose:
       - "3306"
     container_name: devcontainerDb
