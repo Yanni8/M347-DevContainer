@@ -14,8 +14,7 @@ services:
     depends_on:
       - database
     hostname: app
-    environment:
-      - "SQL_CONNECTION=mysql:${MYSQL_PASSWORD}//root:${MYSQL_PASSWORD}@db/snake"
+    env_file: "../.env"
     volumes:
       - ..:~:cached
 
@@ -30,8 +29,7 @@ services:
       - dev-network
     hostname: db
 
-    environment:
-      - "MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}"
+    env_file: "../.env"
 
 networks:
   dev-network:

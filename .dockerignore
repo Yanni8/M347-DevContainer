@@ -10,3 +10,5 @@
 /Dockerfile
 **/*.pyc
 /.github/**
+/gnupg/**
+/.vscode-server/**

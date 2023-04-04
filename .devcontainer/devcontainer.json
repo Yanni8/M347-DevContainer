@@ -4,6 +4,8 @@
 		"../DevEnvironnement/docker-compose.yml"
 	],
 	
+	"workspaceFolder": "/app/development",
+
 	"service": "app",
 
 	"remoteUser": "application",
