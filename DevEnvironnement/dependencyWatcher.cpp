@@ -80,15 +80,19 @@ inline void checkDependencyLoop()
 int main(int argc, char *argv[])
 {
 
-    int pid_file = open("/var/run/dependencywatcher.pid", O_CREAT | O_RDWR, 0666);
-    int rc = flock(pid_file, LOCK_EX | LOCK_NB);
+    int fd = open("/tmp/dependencyWatcher.lock", O_RDWR | O_CREAT, 0666); // open or create lockfile
+//check open success...
+    int rc = flock(fd, LOCK_EX | LOCK_NB); // grab exclusive lock, fail if can't obtain.       LOG(rc);
+
     if (rc)
     {
-        if (EWOULDBLOCK == errno)
-            LOG("Watcher already running...");
+        LOG("Watcher already running...");
+        return 0;
     }
     else
     {
         checkDependencyLoop();
     }
+
+    return 0;
 }
