@@ -7,16 +7,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Build Docker Image
+    - name: Build Dev Image
       run: |
         docker build -t docker.pkg.github.com/yanni8/m347-devcontainer/devcontainer:latest -f ./DevEnvironnement/Dockerfile .
+    - name: Build App image
       run: |
         docker build -t docker.pkg.github.com/yanni8/m347-devcontainer/app:latest .
     - name: Login to GitHub Packages
       run: |
         echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u "${{ github.actor }}" --password-stdin
-    - name: Push Docker Image
+    - name: Push Dev Image
       run: |
         docker push docker.pkg.github.com/yanni8/m347-devcontainer/devcontainer:latest
+    - name: Push App Image
       run: |
         docker push docker.pkg.github.com/yanni8/m347-devcontainer/app:latest
