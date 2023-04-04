@@ -2,6 +2,8 @@
 #include <array>
 #include <memory>
 #include <string>
+#include <vector>
+#include <sstream>
 #include <openssl/sha.h>
 #include <sys/file.h>
 #include <errno.h>
@@ -41,9 +43,14 @@ std::string getSha256Hash(std::string &content)
     return hexString;
 }
 
-void updateRequirements()
+void updateRequirements(std::string& pipLibraries)
 {
-    system("python3 -m pip freeze > requirements.txt");
+    if (pipLibraries.empty())
+    {
+        system("python3 -m pip install -r requirements.txt");
+    } else{
+        system("python3 -m pip freeze > requirements.txt");
+    }
 }
 /**
  * Method to constantly check if a new library got added
@@ -60,7 +67,7 @@ inline void checkDependencyLoop()
         if (fileHash != pipHash)
         {
             // LOG("Dependencys got Updated");
-            updateRequirements();
+            updateRequirements(pipLibraries);
         }
     }
 }
