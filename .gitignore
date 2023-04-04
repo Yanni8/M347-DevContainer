@@ -7,3 +7,8 @@
 /.env
 /gnupg/**
 /.vscode-server/**
+
+/.devcontainer/**
+!/.devcontainer/devcontainer.json
+/.bashrc
+/.gitconfig
