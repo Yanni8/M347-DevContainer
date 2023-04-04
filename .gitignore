@@ -5,7 +5,7 @@
 /bin/**
 /.idea/**
 /.env
-/gnupg/**
+/.gnupg/**
 /.vscode-server/**
 
 /.devcontainer/**
