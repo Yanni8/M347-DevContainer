@@ -4,7 +4,7 @@
 		"../DevEnvironnement/docker-compose.yml"
 	],
 	
-	"workspaceFolder": "/app",
+	"workspaceFolder": "/app/code",
 
 	"service": "app",
 

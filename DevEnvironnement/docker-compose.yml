@@ -13,7 +13,7 @@ services:
     hostname: app
     env_file: "../.env"
     volumes:
-      - ..:/app:cached
+      - ..:/app/code:cached
 
   database:
     image: mysql:5.7
