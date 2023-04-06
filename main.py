@@ -1,3 +1,7 @@
+from dotenv import load_dotenv
+
+load_dotenv()
+
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 from fastapi.staticfiles import StaticFiles
@@ -6,6 +10,7 @@ from app.db.model import Base
 from app.schemas import Score
 from app.db.database import SessionLocal, engine
 from app.service import score_service
+
 
 Base.metadata.create_all(bind=engine)
 
