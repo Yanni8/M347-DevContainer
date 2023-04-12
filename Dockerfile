@@ -6,7 +6,7 @@ LABEL CONTACT="contact@ynnk.dev"
 
 COPY . /app
 
-RUN useradd -d /app -s /bin/bash application \
+RUN useradd -u 999 -d /app -s /bin/bash application \
     && chown application:application -R /app
 
 USER application:application

@@ -22,7 +22,7 @@ services:
     container_name: database
     networks:
       - dev-network
-    hostname: db
+    hostname: database
 
     env_file: "./.env"
 
