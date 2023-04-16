@@ -21,7 +21,7 @@ services:
       - "3306:3306"
     expose:
       - "3306"
-    container_name: devcontainerDb
+    container_name: database
     networks:
       - dev-network
     hostname: database
@@ -30,12 +30,17 @@ services:
 
   phpmyadmin:
     image: phpmyadmin:5
+    container_name: phpmyadminwebui
     env_file: "../.env"
     environment:
       - PMA_HOST=database
     ports:
       - "8081:80"
-
+    networks:
+      - dev-network
+    depends_on:
+      - database
+      
 networks:
   dev-network:
     driver: bridge
