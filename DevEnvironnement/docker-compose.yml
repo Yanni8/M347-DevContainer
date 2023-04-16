@@ -24,9 +24,17 @@ services:
     container_name: devcontainerDb
     networks:
       - dev-network
-    hostname: db
+    hostname: database
 
     env_file: "../.env"
+
+  phpmyadmin:
+    image: phpmyadmin:5
+    env_file: "../.env"
+    environment:
+      - PMA_HOST=database
+    ports:
+      - "8081:80"
 
 networks:
   dev-network:
