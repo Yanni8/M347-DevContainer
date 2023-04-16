@@ -10,6 +10,13 @@
 
 	"remoteUser": "application",
 
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python"
+			]
+		}
+	}
 	//Because the Devcontainer environnement overrides the default Entrypoint...
 	//"onCreateCommand": "echo 'watcher &' >> ~/.bashrc"
 }
