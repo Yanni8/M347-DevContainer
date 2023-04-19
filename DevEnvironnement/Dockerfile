@@ -26,4 +26,4 @@ ENV HOME=
 COPY --from=buildDependencyWatcher watcher /bin/watcher
 
 
-ENTRYPOINT [ "cd", " /app/code" , "&&", "watcher" ]
+ENTRYPOINT [ "watcher" ]
